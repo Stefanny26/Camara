@@ -1,0 +1,120 @@
+<!-- Banner principal con la imagen de fondo -->
+<div class="main-banner" [ngStyle]="{'background-image': 'url(' + backgroundImage + ')'}">
+  <h1 class="banner-title align-self-end">Bienvenidos a la Bolsa de Empleo</h1>
+</div>
+
+<!-- Sección principal de la página -->
+<div class="employment-section">
+
+  <!-- Sección de logros -->
+  <div class="achievements">
+    <h2>🎯 En el último año logramos:</h2>
+    <div class="achievements-grid">
+      <div class="achievement-card">
+        <h2>200+</h2>
+        <p>Vacantes publicadas</p>
+      </div>
+      <div class="achievement-card">
+        <h2>150+</h2>
+        <p>Empresas asociadas</p>
+      </div>
+      <div class="achievement-card">
+        <h2>50+</h2>
+        <p>Candidatos contratados</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Sección informativa -->
+  <div class="info-section">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <img src="assets/congresos.jpg" alt="Personas buscando empleo" class="info-image">
+
+        </div>
+        <div class="col-md-6">
+          <h3>¿Qué ofrecemos?</h3>
+          <ul class="info-list">
+            <li>✅ Publicación de vacantes en el sector industrial.</li>
+            <li>✅ Acceso exclusivo para empresas y postulantes.</li>
+            <li>✅ Capacitación en empleabilidad y manufactura.</li>
+            <li> 📩 <strong>Contacto:</strong> <a href="mailto:empleo@industria.com">empleoindustria.com</a></li>
+            <!-- Botón para abrir el formulario -->
+            <button (click)="openForm()" class="btn-primary-banner">Abrir Formulario</button>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Formulario visible cuando showForm es true -->
+  <div class="form-container" *ngIf="showForm">
+    <h2>Formulario de Vacante</h2>
+
+    <form (submit)="enviarFormulario($event)" enctype="multipart/form-data">
+      <!-- Nombre o Institución -->
+      <label for="nombre">Nombre o Institución</label>
+      <input type="text" id="nombre" name="nombre" required>
+
+      <!-- Filtros -->
+      <div class="filter-options">
+        <label>
+          <input type="checkbox" name="Tiempo_Completo"> Tiempo Completo
+        </label>
+        <label>
+          <input type="checkbox" name="Independiente"> Independiente
+        </label>
+        <label>
+          <input type="checkbox" name="Prácticas"> Prácticas
+        </label>
+        <label>
+          <input type="checkbox" name="Medio_Tiempo"> Medio Tiempo
+        </label>
+        <label>
+          <input type="checkbox" name="Temporal"> Temporal
+        </label>
+      </div>
+
+      <!-- Tipo de vacante -->
+      <label for="vacante">Seleccione tipo de vacante</label>
+      <select id="vacante" name="vacante" required>
+        <option value="Empleo">Bolsa de empleo</option>
+        <option value="Practicas_Profesionales">Bolsa de prácticas profesionales</option>
+        <option value="Vinculacion_Social">Bolsa de vinculación con la sociedad</option>
+        <option value="Proyectos">Proyectos</option>
+      </select>
+
+      <!-- Área de interés -->
+      <label for="area">Área de interés</label>
+      <input type="text" id="area" name="area" required>
+
+      <!-- Mensaje debajo del formulario -->
+      <div class="cv-message">
+        <p>
+          Adicional, por favor envía tu CV actualizado a
+        <p>
+          <strong>Correo: </strong>coordinacionejecutiva&#64;industriassdt.org <br>
+          Presidencia&#64;industriassdt.org .
+        </p>
+      </div>
+
+      <!-- Botón de envío -->
+      <button type="submit">Enviar</button>
+    </form>
+
+    <!-- Mensaje de éxito -->
+    <p *ngIf="successMessage" class="success-message">{{ successMessage }}</p>
+
+    <!-- Botón para cerrar el formulario -->
+    <button (click)="closeForm()" class="btn-primary-banner">Cerrar</button>
+  </div>
+
+<!-- 📲 Botón flotante de WhatsApp -->
+<div class="whatsapp-button" (click)="openWhatsApp()">
+  <img src="assets/icono.png" alt="WhatsApp">
+</div>
+
+
+</div>
+

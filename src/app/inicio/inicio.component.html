@@ -1,0 +1,143 @@
+<!-- Banner dinámico para el evento -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<section class="event-banner">
+  <h1 class="titulo-general">Próximos Eventos</h1>
+  <div class="banner-content grid-layout">
+    <!-- Evento TEF2025 -->
+    <div class="event-column">
+      <h2 class="titulo">Tsáchila Economic Fórum IV Edition <a [routerLink]="['/tef']">TEF2025</a></h2>
+      <p>¡No te pierdas esta oportunidad única de crecimiento y colaboración! ¡Te esperamos!</p>
+      <div id="countdown-tef" class="countdown-animation">Cargando contador...</div><br>
+      <button onclick="window.open('https://docs.google.com/forms/d/1G87IGCYOGStTYYIdzijZiaXJxoAXpd4iMXhv9XqCMsI/edit', '_blank')">
+        Inscribirse a este evento
+      </button>
+   
+    </div>
+    
+    <!-- Evento TBC2025 -->
+    <div class="event-column">
+      <h2 class="titulo">Tsáchila Business Convention <a [routerLink]="['/tbc']">TBC2025</a></h2>
+      <p>¡Únete al mayor encuentro empresarial del año y crea nuevas oportunidades de negocio!</p>
+      <div id="countdown-tbc" class="countdown-animation">Cargando contador...</div><br>
+      <button onclick="window.open('https://docs.google.com/forms/d/1G87IGCYOGStTYYIdzijZiaXJxoAXpd4iMXhv9XqCMsI/edit', '_blank')">
+        Inscribirse a este evento
+      </button>
+      
+    </div>
+  </div>
+</section>
+
+
+<section class="main-banner"
+  [ngStyle]="{'background-image': 'url(' + backgroundImage + ')', 'background-size': 'cover', 'background-position': 'top'}">
+  <div class="overlay">
+    <h1>Bienvenidos a la Cámara de Industrias y Producción de Santo Domingo</h1>
+  </div>
+</section>
+
+<section class="quienes-somos">
+  <div class="container">
+    <h1 class="titulo-seccion">Quiénes Somos</h1>
+
+    <!-- 📌 Sección 1: Historia, Misión y Visión en tarjetas interactivas -->
+    <div class="info-grid">
+      <div class="info-card">
+        <h2>📜 Nuestra Historia</h2>
+        <p>{{ quienesSomos.historia }}</p>
+      </div>
+      <div class="info-card">
+        <h2>🚀 Misión</h2>
+        <p>{{ quienesSomos.mision }}</p>
+      </div>
+      <div class="info-card">
+        <h2>🌍 Visión</h2>
+        <p>{{ quienesSomos.vision }}</p>
+      </div>
+    </div>
+
+    <!-- 🔹 Equipo Directivo -->
+    <div class="galeria">
+      <hr>
+      <h1 class="titulo-seccion">Conoce a Nuestra Presidenta, Socio Fundador y Equipo</h1>
+      <p class="descripcion-seccion">
+        En esta sección te presentamos a la presidenta de la Cámara de Industrias y Producción de Santo Domingo, Magaly
+        Marcela
+        García Sánchez, quien lidera con visión y compromiso. Además, te invitamos a conocer al equipo directivo que la
+        acompaña en esta labor, cada uno de ellos con un rol crucial para el éxito de nuestra organización.
+      </p>
+
+      <!-- Tarjeta destacada -->
+      <div class="featured-event">
+        <div class="row">
+          <div class="col-md-4">
+            <div><img src="assets/PresidentaCIP.jpg" alt="Presidenta"></div>
+          </div>
+          <div class="col-md-8 ">
+            <h2 class="featured-title" style="text-align: center;">GARCÍA SÁNCHEZ MAGALY MARCELA</h2>
+            <h3 style="text-align: center;"><strong>Presidente</strong></h3>
+            <p><strong>Internacional Business | Broker de especias y productos agrícolas</strong></p>
+            <p><strong>Presidente de la Cámara de Industrias de Santo Domingo</strong></p>
+            <p><strong>CEO de Ecuaspices</strong></p>
+            <p><strong>Docente Universitaria</strong></p>
+            <p><strong>Correo:</strong> Presidencia&#64;industriassdt.org </p>
+          </div>
+        </div>
+      </div>
+      <div class="featured-event">
+        <div class="row">
+          <div class="col-md-4">
+            <div><img src="assets/Edgar_Nogales.jpg" alt="Fundador"></div>
+          </div>
+          <div class="col-md-8 ">
+            <h2 class="featured-title" style="text-align: center;">NOGALES JAMI EDGAR ORLANDO</h2>
+            <h3 style="text-align: center;"><strong>Socio Fundador</strong></h3>
+            <p><strong>CEO de RHINOPLAST</strong></p>
+            <p><strong>Fundador de la Cámara de Industrias de Santo Domingo</strong></p>
+            <p><strong>Correo:</strong> edgnog&#64;hotmail.com </p>
+          </div>
+        </div>
+      </div>
+      <h2 style="margin-top: 30px; margin-bottom: 20px;" class="featured-title">
+        Equipo
+        <button class="btn-toggle" (click)="mostrarEquipo = !mostrarEquipo">
+          <i class="fas" [ngClass]="{'fa-plus': !mostrarEquipo, 'fa-minus': mostrarEquipo}"></i>
+        </button>
+      </h2>
+      
+    
+      
+      <!-- Tarjetas de los miembros, ocultas hasta que se presione el botón -->
+      <div class="contenedor-miembros" *ngIf="mostrarEquipo">
+        <p class="descripcion-equipo">
+          El éxito de nuestra organización no solo depende de la visión de nuestra presidenta, sino también del trabajo
+          conjunto de un equipo comprometido y altamente capacitado. A continuación, te presentamos a los miembros del
+          equipo directivo que, junto a la presidenta, hacen posible el desarrollo y crecimiento de la Cámara de
+          Industrias de Santo Domingo.
+        </p>
+        <div *ngFor="let miembro of quienesSomos.equipoDirectivo" class="tarjeta-equipo">
+          <div class="icono-usuario">
+            <i class="fas fa-user-circle"></i>
+          </div>
+          <div class="tarjeta-info">
+            <h3>{{ miembro.nombre }}</h3>
+            <h4>{{ miembro.cargo }}</h4>
+            <p><strong>Correo:</strong> <a [href]="'mailto:' + miembro.correo">{{ miembro.correo }}</a></p>
+          </div>
+        </div>
+      </div>
+      
+
+    </div>
+  </div>
+</section>
+
+<!-- 📲 Botón flotante de WhatsApp -->
+<div class="whatsapp-button" (click)="openWhatsApp()">
+  <img src="assets/icono.png" alt="WhatsApp">
+</div>
+
+<!-- 🔝 Botón flotante para volver al inicio -->
+<div class="scroll-to-top" (click)="scrollToTop()" *ngIf="showScrollButton">
+  ⇧
+</div>
